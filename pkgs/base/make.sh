@@ -1,0 +1,22 @@
+name="base"
+version="1.0.0"
+release="1"
+dependencies=(
+  bash
+  binutils
+  coreutils
+  diffutils
+  file
+  findutils
+  gcc
+  util-linux
+  gawk
+  grep
+  gzip
+  make
+  patch
+  sed
+  tar
+  xz
+  shadow
+)
