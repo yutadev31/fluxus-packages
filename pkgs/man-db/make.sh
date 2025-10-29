@@ -12,7 +12,8 @@ dependencies=(
 )
 
 build() {
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CC="clang"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local configure_options=(
     --prefix=/usr
     --sysconfdir=/etc
@@ -21,6 +22,7 @@ build() {
     --with-browser=/usr/bin/lynx
     --with-vgrind=/usr/bin/vgrind
     --with-grap=/usr/bin/grap
+    CC="$CC"
     CFLAGS="$CFLAGS"
   )
 
