@@ -2,7 +2,7 @@ name="expect"
 version="5.45.4"
 release="1"
 sources=(
-  https://prdownloads.sourceforge.net/expect/expect$version.tar.gz
+  https://downloads.sourceforge.net/project/expect/Expect/$version/expect$version.tar.gz
   https://www.linuxfromscratch.org/patches/lfs/12.4/expect-$version-gcc15-1.patch
 )
 sha256sums=(
@@ -18,7 +18,8 @@ prepare() {
 }
 
 build() {
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CC="clang"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local configure_options=(
     --prefix=/usr
     --with-tcl=/usr/lib
@@ -26,6 +27,7 @@ build() {
     --disable-rpath
     --mandir=/usr/share/man
     --with-tclinclude=/usr/include
+    CC="$CC"
     CFLAGS="$CFLAGS"
   )
 
