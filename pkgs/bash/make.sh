@@ -21,7 +21,7 @@ provides=(
   sh
 )
 
-if [[ i != $_patchver ]]; then
+if [[ 0 != $_patchver ]]; then
   for i in $(seq 1 ${_patchver}); do
     sources=(
       "${sources[@]}"
@@ -31,7 +31,7 @@ if [[ i != $_patchver ]]; then
 fi
 
 prepare() {
-  if [[ i != $_patchver ]]; then
+  if [[ 0 != $_patchver ]]; then
     for i in $(seq 1 ${_patchver}); do
       patch -Np0 -i ./bash${_basever//./}-$(printf "%03d" $i)
     done
