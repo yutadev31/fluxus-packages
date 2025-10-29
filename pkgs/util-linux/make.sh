@@ -16,7 +16,7 @@ validpgpkeys=(
 dependencies=(
   coreutils
   file
-  glibc
+  libc
   libxcrypt
   ncurses
   pam

@@ -5,7 +5,7 @@ sources=(
   https://distfiles.ariadne.space/pkgconf/pkgconf-$version.tar.xz
 )
 dependencies=(
-  glibc
+  libc
 )
 
 build() {

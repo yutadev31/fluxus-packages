@@ -12,7 +12,7 @@ validpgpkeys=(
   'CB8DE70A90CFBF6C3BF5CC5696262ACFFBD3AEC6' # Sebastian Pipping <sping@gentoo.org>
 )
 dependencies=(
-  glibc
+  libc
 )
 
 build() {

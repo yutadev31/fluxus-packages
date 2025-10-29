@@ -12,7 +12,7 @@ validpgpkeys=(
   '678CE3FEE430311596DB8C16F52E98007594C21D' # Björn 'besser82' Esser (besser82@fedoraproject.org) <besser82@fedoraproject.org>
 )
 dependencies=(
-  glibc
+  libc
 )
 
 build() {

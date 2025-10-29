@@ -8,7 +8,7 @@ validpgpkeys=(
   '155D3FC500C834486D1EEA677FD9FCCB000BEEEE' # Jim Meyering <jim@meyering.net>
 )
 dependencies=(
-  glibc
+  libc
   # TODO pcre2
 )
 

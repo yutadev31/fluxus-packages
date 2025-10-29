@@ -9,7 +9,7 @@ validpgpkeys=(
 )
 dependencies=(
   bash
-  glibc
+  libc
 )
 
 build() {

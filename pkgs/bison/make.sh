@@ -8,9 +8,9 @@ validpgpkeys=(
   '7DF84374B1EE1F9764BBE25D0DDCAA3278D5264E' # Akim Demaille <akim.demaille@gmail.com>
 )
 dependencies=(
-  bash
+  sh
   gettext
-  glibc
+  libc
   m4
 )
 

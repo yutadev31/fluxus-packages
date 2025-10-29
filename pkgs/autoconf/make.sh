@@ -8,8 +8,8 @@ validpgpkeys=(
   '82F854F3CE73174B8B63174091FCC32B6769AA64' # Zack Weinberg <zackw@panix.com>
 )
 dependencies=(
-  bash
-  gawk
+  sh
+  awk
   diffutils
   m4
   perl

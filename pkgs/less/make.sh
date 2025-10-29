@@ -8,7 +8,7 @@ validpgpkeys=(
   'AE27252BD6846E7D6EAE1DD6F153A7C833235259' # Mark Nudelman <markn@greenwoodsoftware.com>
 )
 dependencies=(
-  glibc
+  libc
   ncurses
   # TODO pcre2
 )

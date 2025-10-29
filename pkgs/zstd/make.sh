@@ -13,7 +13,7 @@ validpgpkeys=(
 )
 dependencies=(
   gcc
-  glibc
+  libc
   lz4
   zlib
 )

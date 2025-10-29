@@ -9,6 +9,7 @@ dependencies=(
   file
   findutils
   gcc
+  clang
   util-linux
   gawk
   grep

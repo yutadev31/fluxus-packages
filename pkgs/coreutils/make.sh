@@ -10,7 +10,7 @@ validpgpkeys=(
 dependencies=(
   acl
   attr
-  glibc
+  libc
   gmp
   libcap
   openssl

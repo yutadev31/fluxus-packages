@@ -10,7 +10,7 @@ validpgpkeys=(
 dependencies=(
   acl
   attr
-  bash
+  sh
   gcc
   # TODO gnulib-l10n
   # TODO libunistring

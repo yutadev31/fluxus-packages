@@ -8,7 +8,7 @@ validpgpkeys=(
   'A3CC9C870B9D310ABAD4CF2F51722B08FE4745A2' # Simon Josefsson <simon@josefsson.org>
 )
 dependencies=(
-  glibc
+  libc
   libcap
   libxcrypt
   ncurses

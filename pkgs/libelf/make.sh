@@ -14,7 +14,7 @@ validpgpkeys=(
 dependencies=(
   bzip2
   curl
-  glibc
+  libc
   xz
   zlib
   zstd

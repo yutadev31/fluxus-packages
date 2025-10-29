@@ -9,7 +9,7 @@ sha256sums=(
 )
 dependencies=(
   gdbm
-  glibc
+  libc
   libxcrypt
 )
 

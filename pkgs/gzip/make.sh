@@ -10,7 +10,7 @@ validpgpkeys=(
 dependencies=(
   bash
   coreutils
-  glibc
+  libc
   sed
 )
 

@@ -8,7 +8,7 @@ validpgpkeys=(
   'AD17A21EF8AED8F1CC02DBD9F7D5C9BF765C61E3' # Andreas Enge <andreas@enge.fr>
 )
 dependencies=(
-  glibc
+  libc
   libmpdclient
 )
 

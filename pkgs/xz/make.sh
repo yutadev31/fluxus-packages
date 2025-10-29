@@ -8,7 +8,7 @@ validpgpkeys=(
   '3690C240CE51B4670D30AD1C38EE757D69184620' # Lasse Collin <lasse.collin@tukaani.org>
 )
 dependencies=(
-  bash
+  sh
 )
 
 build() {

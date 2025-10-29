@@ -8,8 +8,8 @@ validpgpkeys=(
   'FA26CA784BE188927F22B99F6570EA01146F7354' # Ileana Dumitrescu <ileanadumi95@protonmail.com>
 )
 dependencies=(
-  bash
-  glibc
+  sh
+  libc
   tar
 )
 

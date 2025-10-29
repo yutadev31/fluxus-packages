@@ -9,7 +9,7 @@ validpgpkeys=(
 )
 dependencies=(
   bzip2
-  glibc
+  libc
   libseccomp
   xz
   zlib

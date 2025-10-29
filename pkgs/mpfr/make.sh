@@ -8,7 +8,7 @@ validpgpkeys=(
   'A534BE3F83E241D918280AEB5831D11A0D4DB02A' # Vincent Lefevre <vincent@vinc17.net>
 )
 dependencies=(
-  glibc
+  libc
   gmp
 )
 

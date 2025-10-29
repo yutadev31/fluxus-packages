@@ -8,8 +8,8 @@ validpgpkeys=(
   '4BE4E62655488EB92ABB468F79FFD94BFCE230B1' # Sergey Poznyakoff <gray@gnu.org.ua>
 )
 dependencies=(
-  bash
-  glibc
+  sh
+  libc
   readline
 )
 

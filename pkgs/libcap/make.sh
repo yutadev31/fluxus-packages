@@ -13,7 +13,7 @@ validpgpkeys=(
   '38A644698C69787344E954CE29EE848AE2CCF3F4' # Andrew G. Morgan <morgan@kernel.org>
 )
 dependencies=(
-  glibc
+  libc
   pam
 )
 

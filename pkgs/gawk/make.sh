@@ -7,9 +7,12 @@ sources=(
 validpgpkeys=(
   'D1967C63788713177D861ED7DF597815937EC0D2' # Arnold Robbins <arnold@skeeve.com>
 )
+provides=(
+  awk
+)
 dependencies=(
-  bash
-  glibc
+  sh
+  libc
   mpfr
 )
 

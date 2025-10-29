@@ -11,7 +11,7 @@ dependencies=(
   acl
   attr
   audit
-  glibc
+  libc
   libxcrypt
   pam
 )

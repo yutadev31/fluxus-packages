@@ -8,7 +8,7 @@ validpgpkeys=(
   'A5189DB69C1164D33002936646502EF796917195' # Bernhard Voelker <mail@bernhard-voelker.de>
 )
 dependencies=(
-  glibc
+  libc
 )
 
 build() {

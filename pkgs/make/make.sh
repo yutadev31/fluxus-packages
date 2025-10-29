@@ -8,7 +8,7 @@ validpgpkeys=(
   'B2508A90102F8AE3B12A0090DEACCAAEDB78137A' # Paul D. Smith <paul@mad-scientist.net>
 )
 dependencies=(
-  glibc
+  libc
   guile
 )
 

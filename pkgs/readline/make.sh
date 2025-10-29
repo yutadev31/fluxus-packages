@@ -7,7 +7,7 @@ sources=(
   https://ftp.gnu.org/gnu/readline/readline-$_base_ver.tar.gz{,.sig}
 )
 dependencies=(
-  glibc
+  libc
   ncurses
 )
 validpgpkeys=(

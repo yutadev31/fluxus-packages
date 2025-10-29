@@ -9,7 +9,7 @@ validpgpkeys=(
 )
 dependencies=(
   gcc
-  glibc
+  libc
 )
 
 prepare() {

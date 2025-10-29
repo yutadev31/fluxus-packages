@@ -9,7 +9,7 @@ validpgpkeys=(
 )
 dependencies=(
   acl
-  glibc
+  libc
 )
 
 build() {

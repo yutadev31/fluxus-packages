@@ -12,8 +12,8 @@ validpgpkeys=(
   '12768A96795990107A0D2FDFFC57E3CCACD99A78' # Mark Wielaard <mark@klomp.org>
 )
 dependencies=(
-  bash
-  glibc
+  sh
+  libc
 )
 
 prepare() {

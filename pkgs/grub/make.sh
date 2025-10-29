@@ -8,7 +8,7 @@ validpgpkeys=(
   'BE5C23209ACDDACEB20DB0A28C8189F1988C2166' # Daniel Kiper <dkiper@net-space.pl>
 )
 dependencies=(
-  bash
+  sh
   device-mapper
   gettext
   xz

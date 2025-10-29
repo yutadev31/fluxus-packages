@@ -8,7 +8,7 @@ sha256sums=(
   '537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b'
 )
 dependencies=(
-  glibc
+  libc
 )
 
 build() {

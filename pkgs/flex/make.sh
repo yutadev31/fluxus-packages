@@ -8,8 +8,8 @@ validpgpkeys=(
   'E4B29C8D64885307' # Will Estes <westes575@gmail.com>
 )
 dependencies=(
-  bash
-  glibc
+  sh
+  libc
   m4
 )
 

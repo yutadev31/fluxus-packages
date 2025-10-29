@@ -10,7 +10,7 @@ validpgpkeys=(
   '7C0135FB088AAF6C66C650B9BB5869F064EA74AB' # Chet Ramey <chet@cwru.edu>
 )
 dependencies=(
-  glibc
+  libc
   ncurses
   readline
 )

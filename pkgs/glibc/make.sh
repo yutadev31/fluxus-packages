@@ -8,9 +8,13 @@ sources=(
 validpgpkeys=(
   'FD19E6D31B192EE4DC63EAD3DC2B16215ED5412A' # Andreas K. Huettel (at work) <mail@akhuettel.de>
 )
+provides=(
+  libc
+  tzdata
+)
 dependencies=(
   filesystem
-  linux
+  linux # TODO Replace with linux-headers
 )
 
 prepare() {

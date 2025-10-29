@@ -8,7 +8,7 @@ validpgpkeys=(
   '3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F' # Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 )
 dependencies=(
-  glibc
+  libc
   jansson
   libelf
   zlib

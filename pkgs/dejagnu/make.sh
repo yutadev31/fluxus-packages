@@ -8,7 +8,7 @@ validpgpkeys=(
   'CE9D6843AABACC90' # Jacob Bachmeyer (2021 DejaGnu Release Signing Key) <jcb@gnu.org>
 )
 dependencies=(
-  bash
+  sh
   expect
 )
 

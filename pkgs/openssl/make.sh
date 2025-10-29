@@ -12,7 +12,7 @@ validpgpkeys=(
   'BA5473A2B0587B07FB27CF2D216094DFD0CB81EF' # OpenSSL <openssl@openssl.org>
 )
 dependencies=(
-  glibc
+  libc
 )
 
 build() {
