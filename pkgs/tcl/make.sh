@@ -12,17 +12,19 @@ dependencies=(
 )
 
 build() {
-  SRCDIR=$(pwd)
-  cd unix
-
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CC="clang"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local configure_options=(
     --prefix=/usr
     --mandir=/usr/share/man
     --enable-threads
     --enable-64bit
+    CC="$CC"
     CFLAGS="$CFLAGS"
   )
+
+  SRCDIR=$(pwd)
+  cd unix
 
   ./configure "${configure_options[@]}"
 
@@ -30,6 +32,8 @@ build() {
 }
 
 package() {
+  cd unix
+
   make DESTDIR="$pkgdir" install
   make DESTDIR="$pkgdir" install-private-headers
 }
