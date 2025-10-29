@@ -12,11 +12,13 @@ dependencies=(
 )
 
 build() {
+  local CC="clang"
   local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local configure_options=(
     --prefix=/usr
     --disable-static
     --sysconfdir=/etc
+    CC="$CC"
     CFLAGS="$CFLAGS"
   )
 
