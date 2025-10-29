@@ -25,9 +25,10 @@ prepare() {
 }
 
 build() {
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CC="clang"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
 
-  make CFLAGS="$CFLAGS"
+  make CC="$CC" CFLAGS="$CFLAGS"
 }
 
 package() {
@@ -37,9 +38,7 @@ package() {
   ln -vs libbz2.so.$version $pkgdir/usr/lib/libbz2.so
 
   cp -v bzip2-shared $pkgdir/usr/bin/bzip2
-  for i in $pkgdir/usr/bin/{bzcat,bunzip2}; do
-    ln -vs bzip2 $i
-  done
+  ln -vs bzip2 $pkgdir/usr/bin/bunzip2
 
   rm -vf $pkgdir/usr/lib/libbz2.a
 }
