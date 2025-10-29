@@ -2,7 +2,7 @@ name="dbus"
 version="1.16.2"
 release="1"
 sources=(
-  https://dbus.freedesktop.org/releases/dbus/dbus-1.16.2.tar.xz{,.asc}
+  https://dbus.freedesktop.org/releases/dbus/dbus-$version.tar.xz{,.asc}
 )
 sha256sums=(
   '0ba2a1a4b16afe7bceb2c07e9ce99a8c2c3508e5dec290dbb643384bd6beb7e2'
@@ -13,7 +13,8 @@ validpgpkeys=(
 )
 
 build() {
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CC="clang"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local meson_options=(
     --prefix=/usr
     --buildtype=release
@@ -21,7 +22,7 @@ build() {
     -D c_args="$CFLAGS"
   )
 
-  meson setup . build "${meson_options[@]}"
+  CC="$CC" meson setup . build "${meson_options[@]}"
   meson compile -C build
 }
 
