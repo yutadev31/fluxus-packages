@@ -20,6 +20,7 @@ prepare() {
 }
 
 build() {
+  # TODO
   local configure_options=(
     --prefix=/usr
   )
