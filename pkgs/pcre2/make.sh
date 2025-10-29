@@ -13,7 +13,8 @@ validpgpkeys=(
 )
 
 build() {
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CC="clang"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local configure_options=(
     --prefix=/usr
     --enable-unicode
@@ -24,6 +25,7 @@ build() {
     --enable-pcre2grep-libbz2
     --enable-pcre2test-libreadline
     --disable-static
+    CC="$CC"
     CFLAGS="$CFLAGS"
   )
 
