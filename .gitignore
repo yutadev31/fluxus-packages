@@ -1,3 +1,4 @@
 .sources/
 .dist/
+.env.sh
 *.log
