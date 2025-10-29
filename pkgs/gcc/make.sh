@@ -21,7 +21,7 @@ prepare() {
 build() {
   local CC="gcc"
   local CXX="g++"
-  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CFLAGS="-O2 -pipe -flto $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local CXXFLAGS="$CFLAGS"
   local configure_options=(
     --prefix=/usr

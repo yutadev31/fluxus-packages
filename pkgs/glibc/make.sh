@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   # local CC="clang" # ERROR 2025/10/29
-  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CFLAGS="-O2 -pipe -flto $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local configure_options=(
     --prefix=/usr
     --libexecdir=/usr/lib

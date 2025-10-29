@@ -35,9 +35,9 @@ prepare() {
 }
 
 build() {
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
 
-  make KCFLAGS="$CFLAGS"
+  make LLVM=1 KCFLAGS="$CFLAGS"
 }
 
 package() {
