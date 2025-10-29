@@ -19,7 +19,9 @@ prepare() {
 }
 
 build() {
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CC="gcc"
+  local CXX="g++"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local CXXFLAGS="$CFLAGS"
   local configure_options=(
     --prefix=/usr
@@ -35,6 +37,8 @@ build() {
     --disable-bootstrap
     --disable-fixincludes
     --with-system-zlib
+    CC="$CC"
+    CXX="$CXX"
     CFLAGS="$CFLAGS"
     CXXFLAGS="$CXXFLAGS"
   )
