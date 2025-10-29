@@ -9,7 +9,7 @@ validpgpkeys=(
 )
 dependencies=(
   libc
-  # TODO pcre2
+  pcre2
 )
 
 prepare() {
@@ -17,9 +17,11 @@ prepare() {
 }
 
 build() {
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CC="clang"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local configure_options=(
     --prefix=/usr
+    CC="$CC"
     CFLAGS="$CFLAGS"
   )
 
