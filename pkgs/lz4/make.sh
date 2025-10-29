@@ -12,9 +12,10 @@ dependencies=(
 )
 
 build() {
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CC="clang"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
 
-  make BUILD_STATIC=no PREFIX=/usr CFLAGS="$CFLAGS"
+  make BUILD_STATIC=no PREFIX=/usr CC="$CC" CFLAGS="$CFLAGS"
 }
 
 package() {
