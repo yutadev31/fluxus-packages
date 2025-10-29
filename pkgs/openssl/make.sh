@@ -16,13 +16,15 @@ dependencies=(
 )
 
 build() {
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CC="clang"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local configure_options=(
     --prefix=/usr
     --openssldir=/etc/ssl
     --libdir=lib
     shared
     zlib-dynamic
+    CC="$CC"
     CFLAGS="$CFLAGS"
   )
 
