@@ -13,10 +13,16 @@ dependencies=(
 )
 
 build() {
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CC="clang"
+  local CXX="clang++"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CXXFLAGS="$CFLAGS"
   local configure_options=(
     --prefix=/usr
+    CC="$CC"
+    CXX="$CXX"
     CFLAGS="$CFLAGS"
+    CXXFLAGS="$CXXFLAGS"
   )
 
   ./configure "${configure_options[@]}"
