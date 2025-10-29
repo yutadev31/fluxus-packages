@@ -9,7 +9,8 @@ validpgpkeys=(
 )
 
 build() {
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CC="clang"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local configure_options=(
     --prefix=/usr
     --sysconfdir=/etc/ssh
@@ -17,6 +18,7 @@ build() {
     --with-default-path=/usr/bin
     --with-superuser-path=/usr/bin
     --with-pid-dir=/run
+    CC="$CC"
     CFLAGS="$CFLAGS"
   )
 
@@ -32,14 +34,4 @@ package() {
   install -v -m644 contrib/ssh-copy-id.1 $pkgdir/usr/share/man/man1
   install -v -m755 -d $pkgdir/usr/share/doc/openssh
   install -v -m644 INSTALL LICENCE OVERVIEW README* $pkgdir/usr/share/doc/openssh
-}
-
-install() {
-  install -v -g sys -m700 -d /var/lib/sshd
-  groupadd -g 50 sshd
-  useradd -c 'sshd PrivSep' \
-    -d /var/lib/sshd \
-    -g sshd \
-    -s /bin/false \
-    -u 50 sshd
 }
