@@ -1,6 +1,6 @@
 name="openldap"
 version="2.6.10"
-release="1"
+release="1-dev"
 sources=(
   https://www.openldap.org/software/download/OpenLDAP/openldap-release/openldap-$version.tgz{,.asc}
 )
@@ -9,7 +9,8 @@ validpgpkeys=(
 )
 
 build() {
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CC="clang"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local configure_options=(
     --prefix=/usr
     --sysconfdir=/etc
@@ -31,6 +32,7 @@ build() {
     --disable-sql
     --disable-wt
     --enable-overlays=mod
+    CC="$CC"
     CFLAGS="$CFLAGS"
   )
 

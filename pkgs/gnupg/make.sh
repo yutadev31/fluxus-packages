@@ -1,6 +1,6 @@
 name="gnupg"
 version="2.5.13"
-release="1"
+release="1-dev"
 sources=(
   https://www.gnupg.org/ftp/gcrypt/gnupg/gnupg-$version.tar.bz2{,.sig}
 )
@@ -18,11 +18,13 @@ dependencies=(
 )
 
 build() {
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CC="clang"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local configure_options=(
     --prefix=/usr
     --localstatedir=/var
     --sysconfdir=/etc
+    CC="$CC"
     CFLAGS="$CFLAGS"
   )
 

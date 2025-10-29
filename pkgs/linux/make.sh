@@ -1,6 +1,6 @@
 name="linux"
 version="6.17.5"
-release="1"
+release="1-dev"
 sources=(
   https://cdn.kernel.org/pub/linux/kernel/v${version%%.*}.x/linux-$version.tar.{xz,sign}
   kernel-config
@@ -14,6 +14,9 @@ sha256sums=(
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds <torvalds@kernel.org>
   '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman <gregkh@kernel.org>
+)
+provides=(
+  linux-headers
 )
 dependencies=(
   coreutils
