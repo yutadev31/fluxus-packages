@@ -13,7 +13,8 @@ dependencies=(
 )
 
 build() {
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CC="clang"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local meson_options=(
     --prefix=/usr
     --libexecdir=lib
@@ -24,7 +25,7 @@ build() {
     -D c_args="$CFLAGS"
   )
 
-  meson setup . build "${meson_options[@]}"
+  CC="$CC" meson setup . build "${meson_options[@]}"
   meson compile -C build
 }
 
