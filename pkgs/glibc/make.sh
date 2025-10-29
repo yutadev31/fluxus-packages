@@ -24,14 +24,15 @@ prepare() {
 }
 
 build() {
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  # local CC="clang" # ERROR 2025/10/29
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local configure_options=(
     --prefix=/usr
     --libexecdir=/usr/lib
     --disable-werror
     --disable-nscd
     --enable-stack-protector=strong
-    --enable-kernel=5.4
+    --enable-kernel=6.0
     CFLAGS="$CFLAGS"
   )
 
