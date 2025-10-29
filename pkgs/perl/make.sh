@@ -17,7 +17,8 @@ build() {
   export BUILD_ZLIB=False
   export BUILD_BZIP2=0
 
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  # TODO local CC="clang"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local libdir=/usr/lib/perl${version%%.*}/$(echo "$version" | cut -d '.' -f 1-2)
   local configure_options=(
     -des
