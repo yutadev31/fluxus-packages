@@ -1,0 +1,4 @@
+ftp.gnu.org/gnu ftp.jaist.ac.jp/pub/GNU
+cdn.kernel.org/pub ftp.jaist.ac.jp/pub/Linux/kernel.org
+www.cpan.org ftp.riken.jp/lang/CPAN
+ftp.vim.org ftp.jp.vim.org
