@@ -9,7 +9,8 @@ validpgpkeys=(
 )
 
 build() {
-  local CFLAGS="-O2 -pipe -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
+  local CC="clang"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local configure_options=(
     --prefix=/usr
     --libexecdir=/usr/lib
@@ -17,6 +18,7 @@ build() {
     --with-env-editor
     --docdir=/usr/share/doc/sudo-1.9.17p2
     --with-passprompt="[sudo] password for %p: "
+    CC="$CC"
     CFLAGS="$CFLAGS"
   )
 
