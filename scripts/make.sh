@@ -6,7 +6,7 @@ PKG_SCRIPT="make.sh"
 SOURCES_DIR="$(pwd)/.sources"
 DIST_DIR="$(pwd)/.dist"
 
-export PGP_KEYSERVER="hkps://keyservers.ubuntu.com"
+export PGP_KEYSERVER="hkps://keyserver.ubuntu.com"
 
 log() {
   local level="$1"
