@@ -25,7 +25,7 @@ jobs:
 
       - name: Build package
         run: |
-          ./scripts/make.sh
+          ./scripts/make-builder.sh
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v5
