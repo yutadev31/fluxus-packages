@@ -1,6 +1,7 @@
 name="linux"
 version="6.17.6"
 release="1"
+description="The Linux kernel"
 sources=(
   https://cdn.kernel.org/pub/linux/kernel/v${version%%.*}.x/linux-$version.tar.{xz,sign}
   config
@@ -42,17 +43,11 @@ build() {
 
 package() {
   install -vdm755 $pkgdir/boot
-  install -vDm644 "$(make -s image_name)" $pkgdir/boot/vmlinuz-$version
-  install -vDm644 System.map $pkgdir/boot/System.map-$version
-  install -vDm644 .config $pkgdir/boot/config-$version
+  install -vDm644 "$(make -s image_name)" $pkgdir/boot/vmlinuz-linux
+  install -vDm644 System.map $pkgdir/boot/System.map
+  install -vDm644 .config $pkgdir/boot/config
 
   make INSTALL_MOD_PATH=$pkgdir/usr modules_install
-
-  install -vdm755 $pkgdir/etc/modprobe.d
-  cat >$pkgdir/etc/modprobe.d/usb.conf <<EOF
-install ohci_hcd /sbin/modprobe ehci_hcd ; /sbin/modprobe -i ohci_hcd ; true
-install uhci_hcd /sbin/modprobe ehci_hcd ; /sbin/modprobe -i uhci_hcd ; true
-EOF
 
   make INSTALL_HDR_PATH=$pkgdir/usr headers_install
 

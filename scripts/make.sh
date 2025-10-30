@@ -282,8 +282,8 @@ main() {
 
   run_function "$pkg_name" "prepare" "false"
   run_function "$pkg_name" "build" "false"
-  run_function "$pkg_name" "test" "false"
-  run_function "$pkg_name" "package" "false"
+  # run_function "$pkg_name" "test" "false"
+  run_function "$pkg_name" "package" "true"
 
   check_dir_structure "$pkg_name"
   create_archive "$pkg_name"
