@@ -6,10 +6,9 @@ sources=(
 )
 
 build() {
-  local LD="lld"
-  local CC="clang"
-  local CXX="clang++"
-  local CFLAGS="-O2 -pipe -flto $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL -fuse-ld=$LD"
+  local CC="gcc"
+  local CXX="g++"
+  local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local CXXFLAGS="$CFLAGS"
   local cmake_options=(
     -D CMAKE_INSTALL_PREFIX=/usr
