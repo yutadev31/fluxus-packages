@@ -259,6 +259,8 @@ create_archive() {
   local pkg_name="$1"
   local pkg_dir="/tmp/pkg-$pkg_name"
 
+  mkdir -p "$DIST_DIR"
+
   fakeroot tar -czf "$DIST_DIR/$pkg_name.tar.zst" -C "$pkg_dir" .
   log ok "Created archive: $pkg_name.tar.zst"
 }
