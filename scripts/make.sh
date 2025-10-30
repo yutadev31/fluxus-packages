@@ -262,7 +262,7 @@ create_archive() {
 
   mkdir -p "$DIST_DIR"
 
-  fakeroot tar -Izstd -cf "$DIST_DIR/$pkg_name.tar.zst" -C "$pkg_dir" .
+  fakeroot tar -I 'zstd -T0 -19' -cf "$DIST_DIR/$pkg_name.tar.zst" -C "$pkg_dir" .
   log ok "Created archive: $pkg_name.tar.zst"
 }
 
