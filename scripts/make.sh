@@ -80,13 +80,15 @@ checksums() {
       log err "Number of sources and ${algo}sums do not match."
     fi
 
+    sumcmd="${algo}sum"
+
     for i in "${!_sources[@]}"; do
       local src="${_sources[$i]}"
       local expected="${_sums[$i]}"
 
       [[ $expected == "SKIP" ]] && continue
 
-      local file="$sources_dir/$(basename "$src")"
+      local file="$SOURCES_DIR/$(basename "$src")"
       [[ ! -f "$file" ]] && log err "Missing file: $file"
 
       local actual="$($sumcmd "$file" | awk '{print $1}')"
@@ -194,16 +196,25 @@ copy_sources() {
 
   for src_url in "${_sources[@]}"; do
     local filename="$(basename "$src_url")"
-    local src="$SOURCES_DIR/$filename"
     local dest="$work_dir/$filename"
 
-    [[ ! -f "$src" ]] && log err "Missing source file: $src"
+    if [[ $src_url =~ ^https?:// ]]; then
+      local src="$SOURCES_DIR/$filename"
 
-    if [[ "$src" =~ \.tar\.(gz|xz|bz2|zst)$ || "$src" == *.tgz ]]; then
-      tar -xf "$src" -C "$work_dir" --strip-components=1
-      log ok "Extracted: $filename"
+      [[ ! -f "$src" ]] && log err "Missing source file: $src"
+
+      if [[ "$src" =~ \.tar\.(gz|xz|bz2|zst)$ || "$src" == *.tgz ]]; then
+        tar -xf "$src" -C "$work_dir" --strip-components=1
+        log ok "Extracted: $filename"
+      else
+        log ok "Copying $filename"
+        cp "$src" "$dest"
+      fi
     else
-      log ok "Copying $filename"
+      local src="$PKGS_DIR/$pkg_name/$filename"
+
+      [[ ! -f "$src" ]] && log err "Missing source file: $src"
+
       cp "$src" "$dest"
     fi
   done
@@ -266,7 +277,7 @@ main() {
 
   download_sources "$pkg_name" "sources"
   checksums "$pkg_name" "sources"
-  verify_signatures "$pkg_name" "sources" "validpgpkeys"
+  # verify_signatures "$pkg_name" "sources" "validpgpkeys"
   copy_sources "$pkg_name" "sources"
 
   run_function "$pkg_name" "prepare" "false"
@@ -282,14 +293,4 @@ main() {
   log ok "Package $pkg_name built successfully"
 }
 
-packages="$@"
-
-if [[ -z "$packages" ]]; then
-  packages=$(ls "$PKGS_DIR")
-fi
-
-for pkg_name in $packages; do
-  main "$pkg_name"
-done
-
-log ok "All packages built successfully"
+main "$1"

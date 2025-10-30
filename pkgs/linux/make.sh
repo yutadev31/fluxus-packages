@@ -1,13 +1,13 @@
 name="linux"
-version="6.17.5"
-release="1-dev"
+version="6.17.6"
+release="1"
 sources=(
   https://cdn.kernel.org/pub/linux/kernel/v${version%%.*}.x/linux-$version.tar.{xz,sign}
-  kernel-config
+  config
 )
 # https://www.kernel.org/pub/linux/kernel/v6.x/sha256sums.asc
 sha256sums=(
-  'c05faf36e9c2164be723cf6ada8533788804d48f9dd2fe1be2ccee3616a92bce'
+  '8ecfbc6b693448abb46144a8d04d1e1631639c7661c1088425a2e5406f13c69c'
   'SKIP'
   'SKIP'
 )
@@ -31,13 +31,13 @@ fetch_latest() {
 }
 
 prepare() {
-  mv kernel-config .config
+  mv config .config
 }
 
 build() {
   local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
 
-  make LLVM=1 KCFLAGS="$CFLAGS"
+  make KCFLAGS="$CFLAGS"
 }
 
 package() {
