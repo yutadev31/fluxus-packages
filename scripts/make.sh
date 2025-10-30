@@ -6,6 +6,8 @@ PKG_SCRIPT="make.sh"
 SOURCES_DIR="$(pwd)/.sources"
 DIST_DIR="$(pwd)/.dist"
 
+PGP_KEYSERVER="keyservers.ubuntu.com"
+
 log() {
   local level="$1"
   shift
