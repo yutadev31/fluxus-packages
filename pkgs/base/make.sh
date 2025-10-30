@@ -1,6 +1,7 @@
 name="base"
 version="1.0.0"
 release="1"
+description="Base system meta package"
 dependencies=(
   bash
   binutils

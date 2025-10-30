@@ -194,7 +194,8 @@ copy_sources() {
 
   mkdir -p "$work_dir"
 
-  for src_url in "${_sources[@]}"; do
+  for src_index in "${!_sources[@]}"; do
+    local src_url="${_sources[$src_index]}"
     local filename="$(basename "$src_url")"
     local dest="$work_dir/$filename"
 
@@ -203,7 +204,7 @@ copy_sources() {
 
       [[ ! -f "$src" ]] && log err "Missing source file: $src"
 
-      if [[ "$src" =~ \.tar\.(gz|xz|bz2|zst)$ || "$src" == *.tgz ]]; then
+      if [[ "$src" =~ \.tar\.(gz|xz|bz2|zst)$ || "$src" == *.tgz ]] && [[ $src_index -eq 0 ]]; then
         tar -xf "$src" -C "$work_dir" --strip-components=1
         log ok "Extracted: $filename"
       else
@@ -261,7 +262,7 @@ create_archive() {
 
   mkdir -p "$DIST_DIR"
 
-  fakeroot tar -czf "$DIST_DIR/$pkg_name.tar.zst" -C "$pkg_dir" .
+  fakeroot tar -Izstd -cf "$DIST_DIR/$pkg_name.tar.zst" -C "$pkg_dir" .
   log ok "Created archive: $pkg_name.tar.zst"
 }
 
