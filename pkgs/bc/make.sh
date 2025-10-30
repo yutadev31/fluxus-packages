@@ -16,7 +16,7 @@ dependencies=(
 )
 
 build() {
-  local LD="ld.lld"
+  local LD="lld"
   local CC="clang -std=c99"
   local CFLAGS="-O3 -pipe -flto $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL -fuse-ld=$LD"
   local configure_options=(

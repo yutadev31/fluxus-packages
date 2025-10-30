@@ -10,7 +10,7 @@ prepare() {
 }
 
 build() {
-  local LD="ld.lld"
+  local LD="lld"
   local CC="clang"
   local CFLAGS="-O2 -pipe -flto $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL -fuse-ld=$LD"
   local meson_options=(

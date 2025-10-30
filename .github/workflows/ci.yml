@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: archlinux:base-devel
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      - name: Set up environment
+        run: cp default.env.sh .env.sh
+
+      - name: Install dependencies
+        run: |
+          sudo pacman -Syu --noconfirm --needed wget
+
+      - name: Build package
+        run: |
+          ./scripts/make.sh
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v5
+        with:
+          name: fluxus-packages
+          path: .dist

@@ -6,7 +6,7 @@ sources=(
 )
 
 build() {
-  local LD="ld.lld"
+  local LD="lld"
   local CC="clang"
   local CXX="clang++"
   local CFLAGS="-O2 -pipe -flto $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL -fuse-ld=$LD"
