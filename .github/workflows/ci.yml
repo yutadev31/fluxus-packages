@@ -21,7 +21,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo pacman -Syu --noconfirm --needed wget
+          sudo pacman -Syu --noconfirm --needed wget bc
 
       - name: Build package
         run: |
