@@ -1,6 +1,6 @@
 # Fluxus Packages
 
-This repository is a collection of package build scripts for Fluxus Linux.
+This repository is a collection of package build scripts for **Fluxus OS**.
 
 ## Directory Structure
 

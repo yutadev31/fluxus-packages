@@ -15,6 +15,13 @@ dependencies=(
   zstd
 )
 
+fetch_latest() {
+  rsync --dry-run rsync://ftp.gnu.org/gnu/binutils/ | gawk '{print $5}' |
+    grep -E '^binutils-[0-9]+(\.[0-9]+)+\.tar\.zst$' |
+    sed -E 's/binutils-([0-9]+(\.[0-9]+)+)\.tar\.zst/\1/' |
+    sort -V | tail -n 1
+}
+
 build() {
   local CC="gcc"
   local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"

@@ -1,11 +1,8 @@
-name="procps-ng"
-version="4.0.5"
+name="rsync"
+version="3.4.1"
 release="1"
 sources=(
-  https://sourceforge.net/projects/procps-ng/files/Production/procps-ng-$version.tar.xz{,.asc}
-)
-validpgpkeys=(
-  '5D3DF0F538B327C0AA7A77A2022166C0FF3C84E3' # Craig Small <csmall@dropbear.xyz>
+  https://www.samba.org/ftp/rsync/src/rsync-$version.tar.gz{,.asc}
 )
 
 build() {
@@ -13,10 +10,8 @@ build() {
   local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
   local configure_options=(
     --prefix=/usr
-    --disable-static
-    --disable-kill
-    --enable-watch8bit
-    --with-systemd
+    --disable-xxhash
+    --without-included-zlib
     CC="$CC"
     CFLAGS="$CFLAGS"
   )

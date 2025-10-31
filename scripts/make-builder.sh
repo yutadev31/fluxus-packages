@@ -1,5 +1,5 @@
 #!/bin/bash
-set -euo pipefail
+set -uo pipefail
 
 packages=(
   binutils
@@ -25,5 +25,8 @@ for package in "${packages[@]}"; do
   ./scripts/make.sh "$package"
 done
 
-mkdir .tmp && sudo mkdir .tmp/builder
-sudo fpm install "${packages[@]}" --dest .tmp/builder
+mkdir -p .tmp && sudo mkdir -p .tmp/builder
+
+for package in "${packages[@]}"; do
+  sudo ~/.cargo/bin/fpm install ".dist/$package.tar.zst" --dest .tmp/builder
+done

@@ -262,9 +262,9 @@ write_metadata() {
 
   mkdir -p "$pkg_dir"
 
-  echo "name: $name" > "$pkg_dir/METADATA"
-  echo "version: $version" >> "$pkg_dir/METADATA"
-  echo "release: $release" >> "$pkg_dir/METADATA"
+  echo "name: $name" >"$pkg_dir/METADATA"
+  echo "version: $version" >>"$pkg_dir/METADATA"
+  echo "release: $release" >>"$pkg_dir/METADATA"
 }
 
 create_archive() {

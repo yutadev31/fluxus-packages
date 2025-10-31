@@ -16,6 +16,13 @@ dependencies=(
   openssl
 )
 
+fetch_latest() {
+  rsync --dry-run rsync://ftp.gnu.org/gnu/coreutils/ | gawk '{print $5}' |
+    grep -E '^coreutils-[0-9]+(\.[0-9]+)+\.tar\.xz$' |
+    sed -E 's/coreutils-([0-9]+(\.[0-9]+)+)\.tar\.xz/\1/' |
+    sort -V | tail -n 1
+}
+
 build() {
   local CC="gcc"
   local CFLAGS="-O2 -pipe $AVX_LEVEL -march=$MARCH_LEVEL -mtune=$MTUNE_LEVEL"
