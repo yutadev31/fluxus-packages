@@ -256,6 +256,17 @@ check_dir_structure() {
   done
 }
 
+write_metadata() {
+  local pkg_name="$1"
+  local pkg_dir="/tmp/pkg-$pkg_name"
+
+  mkdir -p "$pkg_dir"
+
+  echo "name: $name" > "$pkg_dir/METADATA"
+  echo "version: $version" >> "$pkg_dir/METADATA"
+  echo "release: $release" >> "$pkg_dir/METADATA"
+}
+
 create_archive() {
   local pkg_name="$1"
   local pkg_dir="/tmp/pkg-$pkg_name"
@@ -289,6 +300,7 @@ main() {
   run_function "$pkg_name" "package" "true"
 
   check_dir_structure "$pkg_name"
+  write_metadata "$pkg_name"
   create_archive "$pkg_name"
 
   cleanup "$pkg_name"

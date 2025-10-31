@@ -24,3 +24,6 @@ packages=(
 for package in "${packages[@]}"; do
   ./scripts/make.sh "$package"
 done
+
+mkdir .tmp && sudo mkdir .tmp/builder
+sudo fpm install "${packages[@]}" --dest .tmp/builder
