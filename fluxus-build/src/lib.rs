@@ -21,7 +21,7 @@ struct Source {
 struct Prepare {
     source: Source,
     #[serde(default)]
-    additionals: Vec<Source>,
+    additional_files: Vec<Source>,
     #[serde(default)]
     patch_strip: usize,
     #[serde(default)]
@@ -66,7 +66,7 @@ struct Package {
 }
 
 #[derive(Debug, Clone, Deserialize)]
-struct PackageFile {
+struct PackageYaml {
     #[serde(default)]
     prepare: Prepare,
     #[serde(default)]
@@ -76,10 +76,10 @@ struct PackageFile {
     packages: Vec<Package>,
 }
 
-impl PackageFile {
+impl PackageYaml {
     fn open(path: &str) -> anyhow::Result<Self> {
         let content = std::fs::read_to_string(path)?;
-        let metadata: PackageFile = serde_yaml::from_str(&content)?;
+        let metadata: PackageYaml = serde_yaml::from_str(&content)?;
         Ok(metadata)
     }
 }
@@ -92,9 +92,9 @@ struct Metadata {
     description: String,
 }
 
-fn get_pkgfile(package: &str) -> anyhow::Result<PackageFile> {
-    let meta_path = format!("pkgs/{}/pkg.yaml", package);
-    PackageFile::open(&meta_path)
+fn get_pkg_yaml(package: &str) -> anyhow::Result<PackageYaml> {
+    let path = format!("pkgs/{}/pkg.yaml", package);
+    PackageYaml::open(&path)
 }
 
 fn get_dirs(package: &str) -> anyhow::Result<(String, String)> {
@@ -125,11 +125,11 @@ fn download_file(url: &str) -> anyhow::Result<String> {
     Ok(filepath)
 }
 
-fn download_sources(pkg: &PackageFile) -> anyhow::Result<(String, Vec<String>, Vec<String>)> {
+fn download_sources(pkg: &PackageYaml) -> anyhow::Result<(String, Vec<String>, Vec<String>)> {
     let source_path = download_file(&pkg.prepare.source.url)?;
 
     let mut additional_paths = Vec::new();
-    for additional in &pkg.prepare.additionals {
+    for additional in &pkg.prepare.additional_files {
         let path = download_file(&additional.url)?;
         additional_paths.push(path);
     }
@@ -244,7 +244,7 @@ fn create_archive(metadata: &Metadata, pkg_dir: &str, current_dir: &str) -> anyh
 pub fn build_package(package: &str) -> anyhow::Result<()> {
     let current_dir = std::env::current_dir()?.to_string_lossy().to_string();
 
-    let pkg = get_pkgfile(package)?;
+    let pkg = get_pkg_yaml(package)?;
     let (work_dir, pkg_dir) = get_dirs(package)?;
     cleanup(&work_dir, &pkg_dir)?;
 

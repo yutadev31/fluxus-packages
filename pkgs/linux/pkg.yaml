@@ -1,0 +1,39 @@
+prepare:
+  source:
+    url: https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.17.6.tar.xz
+  additional_files:
+    - path: ./config
+
+build:
+  envs:
+    cflags: -O2 -pipe
+  steps:
+    - make KFALAGS="$cflags"
+
+packages:
+  - meta:
+      name: linux
+      version: 6.17.6
+      release: 1
+      description: The Linux kernel
+    steps:
+      - install -vdm755 $out/boot
+      - install -vDm644 "$(make -s image_name)" $out/boot/vmlinuz-linux
+      - install -vDm644 System.map $out/boot/System.map
+      - install -vDm644 .config $out/boot/config
+      - make INSTALL_MOD_PATH=$out/usr modules_install
+  - meta:
+      name: linux-headers
+      version: 6.17.6
+      release: 1
+      description:
+    steps:
+      - make INSTALL_HDR_PATH=$out/usr headers_install
+  - meta:
+      name: linux-docs
+      version: 6.17.6
+      release: 1
+      description:
+    steps:
+      - install -vdm755 $out/usr/share/doc/linux
+      - cp -vr Documentation/* $out/usr/share/doc/linux
