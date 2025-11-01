@@ -41,5 +41,5 @@ packages:
         - sh
     steps:
       - make install DESTDIR="$out"
-      - ln -s bash "$out/usr/bin/sh"
-      - ln -s bash "$out/usr/bin/rbash"
+      - ln -vs bash "$out/usr/bin/sh"
+      - ln -vs bash "$out/usr/bin/rbash"

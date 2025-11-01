@@ -1,0 +1,29 @@
+packages:
+  - meta:
+      name: filesystem
+      version: 1.0.0
+      release: 1
+    steps:
+      - install -vdm755 $out/boot
+      - install -vdm755 $out/dev
+      - install -vdm755 $out/etc
+      - install -vdm755 $out/home
+      - install -vdm755 $out/mnt
+      - install -vdm755 $out/opt
+      - install -vdm755 $out/proc
+      - install -vdm700 $out/root
+      - install -vdm755 $out/run
+      - install -vdm755 $out/sys
+      - install -vdm1777 $out/tmp
+      - install -vdm755 $out/usr
+      - install -vdm755 $out/usr/bin
+      - install -vdm755 $out/usr/include
+      - install -vdm755 $out/usr/lib
+      - install -vdm755 $out/usr/lib64
+      - install -vdm755 $out/usr/share/licenses
+      - install -vdm755 $out/usr/share/man/man{1,2,3,4,5,6,7,8}
+      - ln -vs usr/bin $out/bin
+      - ln -vs usr/lib $out/lib
+      - ln -vs usr/lib64 $out/lib64
+      - ln -vs usr/bin $out/sbin
+      - ln -vs usr/bin $out/usr/sbin
