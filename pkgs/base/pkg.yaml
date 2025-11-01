@@ -1,0 +1,21 @@
+packages:
+  - meta:
+      name: base
+      version: 1.0.0
+      release: 1
+      description: Base system package for Fluxus OS
+      depends:
+        - fpm
+        - bash
+        - coreutils
+        - diffutils
+        - file
+        - findutils
+        - util-linux
+        - gawk
+        - grep
+        - gzip
+        - sed
+        - tar
+        - xz
+        - shadow

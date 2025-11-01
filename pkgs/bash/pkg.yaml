@@ -1,0 +1,45 @@
+prepare:
+  source:
+    url: https://ftp.gnu.org/gnu/bash/bash-5.3.tar.gz
+    signature: ${url}.sig
+  patch_strip: 0
+  patches:
+    - url: https://ftp.gnu.org/gnu/bash/bash-5.3-patches/bash53-001
+      signature: ${url}.sig
+    - url: https://ftp.gnu.org/gnu/bash/bash-5.3-patches/bash53-002
+      signature: ${url}.sig
+    - url: https://ftp.gnu.org/gnu/bash/bash-5.3-patches/bash53-003
+      signature: ${url}.sig
+
+build:
+  depends:
+    - binutils
+    - gcc
+  envs:
+    cc: gcc
+    cflags: -O2 -pipe
+    configure_flags: --prefix=/usr --without-bash-malloc --with-installed-readline
+  steps:
+    - ./configure $configure_flags CC="$cc" CFLAGS="$cflags"
+    - make -j$(nproc)
+
+test:
+  steps:
+    - make tests
+
+packages:
+  - meta:
+      name: bash
+      version: 5.3.3
+      release: 1
+      description: The bourne again shell
+      depends:
+        - libc
+        - ncurses
+        - readline
+      provides:
+        - sh
+    steps:
+      - make install DESTDIR="$out"
+      - ln -s bash "$out/usr/bin/sh"
+      - ln -s bash "$out/usr/bin/rbash"

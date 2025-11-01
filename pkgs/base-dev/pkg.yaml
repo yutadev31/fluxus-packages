@@ -1,0 +1,15 @@
+packages:
+  - meta:
+      name: base-dev
+      version: 1.0.0
+      release: 1
+      description: Base development system package for Fluxus OS
+      depends:
+        - base
+        - binutils
+        - gcc
+        - llvm
+        - lld
+        - clang
+        - make
+        - patch
